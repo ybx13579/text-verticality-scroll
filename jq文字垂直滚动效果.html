@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>jq文字垂直滚动效果</title>
+    <meta charset="utf-8" />
+    <style>
+        .scroll_screen {
+            width: 800px;
+            height: 127px;
+            position: absolute;
+            top: 45px;
+            font-size: 18px;
+            background: #e8e8e8;
+            border: 1px solid #fff;
+            box-sizing: border-box;
+            padding-left: 19px;
+            padding-top: 34px;
+        }
+
+            .scroll_screen div {
+                height: 70px;
+                overflow: hidden;
+            }
+
+            .scroll_screen ul li {
+                padding-left: 30px;
+                line-height: 34px;
+                background-repeat: no-repeat;
+                background-position: center left;
+                text-shadow: #666 0px 2px 4px;
+            }
+    </style>
+</head>
+<body>
+    <div class="scroll_screen">
+        <div>
+            <ul>
+                <li>披风 - 陈奕迅</li>
+                <li>曲 : MJ谭杰明 & Jerald 词 : 易家扬</li>
+                <li>你以为我属于天空 我感觉你才是英雄</li>
+                <li>每个人的命当然不同 所以要相逢</li>
+                <li>多平凡的人也一样 很需要梦</li>
+                <li>孤单向前走 偶尔回头看没当孩子有多久</li>
+                <li>人不能飞于是努力走 但没人说不准看天空</li>
+                <li>在心里缝 一张披风 假装躺在云上好轻松</li>
+                <li>再辛苦至少可以咬咬牙 去等可能的风</li>
+                <li>为谁腾空</li>
+                <li>...</li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    //屏幕滚动
+    function autoScroll(obj) {
+        $(".scroll_screen ul").animate({
+            marginTop: "-34px"
+        }, 500, function () {
+            $(this).css({ marginTop: "0px" }).find("li:first").appendTo(this);
+        })
+    }
+    $(function () {
+        if ($(".scroll_screen ul li").length > 2) {
+            setInterval('autoScroll(".scroll_screen")', 2000);
+        }
+    })
+</script>
